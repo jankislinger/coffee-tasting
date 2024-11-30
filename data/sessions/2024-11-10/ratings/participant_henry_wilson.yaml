@@ -1,0 +1,43 @@
+participant_id: participant_henry_wilson
+ratings:
+- acidity: 4
+  aftertaste: 5
+  aroma: 2
+  bitterness: 8
+  body: 6
+  coffee_id: coffee_ethiopian_yirgacheffe
+  flavor: 6
+  sweetness: 6
+- acidity: 1
+  aftertaste: 4
+  aroma: 9
+  bitterness: 7
+  body: 8
+  coffee_id: coffee_colombian_supremo
+  flavor: 9
+  sweetness: 10
+- acidity: 5
+  aftertaste: 1
+  aroma: 6
+  bitterness: 4
+  body: 3
+  coffee_id: coffee_kenyan_aa
+  flavor: 4
+  sweetness: 5
+- acidity: 8
+  aftertaste: 10
+  aroma: 5
+  bitterness: 9
+  body: 5
+  coffee_id: coffee_guatemala_antigua
+  flavor: 9
+  sweetness: 2
+- acidity: 9
+  aftertaste: 6
+  aroma: 3
+  bitterness: 9
+  body: 9
+  coffee_id: coffee_sumatra_mandheling
+  flavor: 7
+  sweetness: 10
+session_date: '2024-11-10'

@@ -1,0 +1,43 @@
+participant_id: participant_grace_davis
+ratings:
+- acidity: 3
+  aftertaste: 8
+  aroma: 3
+  bitterness: 8
+  body: 3
+  coffee_id: coffee_ethiopian_yirgacheffe
+  flavor: 9
+  sweetness: 2
+- acidity: 7
+  aftertaste: 8
+  aroma: 10
+  bitterness: 4
+  body: 8
+  coffee_id: coffee_colombian_supremo
+  flavor: 5
+  sweetness: 5
+- acidity: 3
+  aftertaste: 7
+  aroma: 7
+  bitterness: 1
+  body: 6
+  coffee_id: coffee_kenyan_aa
+  flavor: 6
+  sweetness: 1
+- acidity: 2
+  aftertaste: 9
+  aroma: 7
+  bitterness: 3
+  body: 9
+  coffee_id: coffee_guatemala_antigua
+  flavor: 1
+  sweetness: 7
+- acidity: 6
+  aftertaste: 2
+  aroma: 5
+  bitterness: 2
+  body: 6
+  coffee_id: coffee_sumatra_mandheling
+  flavor: 1
+  sweetness: 2
+session_date: '2024-11-20'

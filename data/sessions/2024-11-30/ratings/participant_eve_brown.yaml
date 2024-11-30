@@ -1,0 +1,43 @@
+participant_id: participant_eve_brown
+ratings:
+- acidity: 10
+  aftertaste: 10
+  aroma: 10
+  bitterness: 10
+  body: 3
+  coffee_id: coffee_ethiopian_yirgacheffe
+  flavor: 5
+  sweetness: 9
+- acidity: 2
+  aftertaste: 7
+  aroma: 5
+  bitterness: 6
+  body: 10
+  coffee_id: coffee_colombian_supremo
+  flavor: 8
+  sweetness: 4
+- acidity: 4
+  aftertaste: 1
+  aroma: 5
+  bitterness: 1
+  body: 6
+  coffee_id: coffee_kenyan_aa
+  flavor: 2
+  sweetness: 5
+- acidity: 9
+  aftertaste: 10
+  aroma: 7
+  bitterness: 10
+  body: 10
+  coffee_id: coffee_guatemala_antigua
+  flavor: 2
+  sweetness: 3
+- acidity: 5
+  aftertaste: 1
+  aroma: 2
+  bitterness: 2
+  body: 3
+  coffee_id: coffee_sumatra_mandheling
+  flavor: 3
+  sweetness: 8
+session_date: '2024-11-30'

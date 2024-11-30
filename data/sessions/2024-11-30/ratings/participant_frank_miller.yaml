@@ -1,0 +1,43 @@
+participant_id: participant_frank_miller
+ratings:
+- acidity: 3
+  aftertaste: 6
+  aroma: 4
+  bitterness: 9
+  body: 8
+  coffee_id: coffee_ethiopian_yirgacheffe
+  flavor: 1
+  sweetness: 10
+- acidity: 6
+  aftertaste: 4
+  aroma: 3
+  bitterness: 4
+  body: 1
+  coffee_id: coffee_colombian_supremo
+  flavor: 8
+  sweetness: 4
+- acidity: 8
+  aftertaste: 6
+  aroma: 1
+  bitterness: 4
+  body: 6
+  coffee_id: coffee_kenyan_aa
+  flavor: 6
+  sweetness: 6
+- acidity: 9
+  aftertaste: 8
+  aroma: 1
+  bitterness: 3
+  body: 5
+  coffee_id: coffee_guatemala_antigua
+  flavor: 5
+  sweetness: 4
+- acidity: 6
+  aftertaste: 6
+  aroma: 1
+  bitterness: 4
+  body: 7
+  coffee_id: coffee_sumatra_mandheling
+  flavor: 3
+  sweetness: 9
+session_date: '2024-11-30'

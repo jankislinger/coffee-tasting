@@ -1,0 +1,13 @@
+participant_id: participant_carol_williams
+rankings:
+- coffee_id: coffee_kenyan_aa
+  rank: 1
+- coffee_id: coffee_colombian_supremo
+  rank: 2
+- coffee_id: coffee_sumatra_mandheling
+  rank: 3
+- coffee_id: coffee_guatemala_antigua
+  rank: 4
+- coffee_id: coffee_ethiopian_yirgacheffe
+  rank: 5
+session_date: '2024-11-20'
