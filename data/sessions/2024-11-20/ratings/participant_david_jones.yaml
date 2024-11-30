@@ -1,43 +1,43 @@
 participant_id: participant_david_jones
 ratings:
-- acidity: 3
-  aftertaste: 1
-  aroma: 6
-  bitterness: 6
-  body: 10
-  coffee_id: coffee_ethiopian_yirgacheffe
-  flavor: 2
-  sweetness: 3
-- acidity: 5
-  aftertaste: 5
+- acidity: 9
+  aftertaste: 6
   aroma: 1
-  bitterness: 7
+  bitterness: 5
   body: 8
-  coffee_id: coffee_colombian_supremo
-  flavor: 1
+  coffee_id: coffee_ethiopian_yirgacheffe
+  flavor: 3
   sweetness: 7
-- acidity: 2
-  aftertaste: 1
-  aroma: 7
-  bitterness: 8
-  body: 8
+- acidity: 7
+  aftertaste: 8
+  aroma: 9
+  bitterness: 6
+  body: 3
+  coffee_id: coffee_colombian_supremo
+  flavor: 8
+  sweetness: 1
+- acidity: 9
+  aftertaste: 7
+  aroma: 5
+  bitterness: 7
+  body: 6
   coffee_id: coffee_kenyan_aa
-  flavor: 9
-  sweetness: 5
+  flavor: 6
+  sweetness: 4
 - acidity: 4
-  aftertaste: 2
-  aroma: 8
-  bitterness: 9
+  aftertaste: 7
+  aroma: 10
+  bitterness: 5
   body: 6
   coffee_id: coffee_guatemala_antigua
-  flavor: 7
-  sweetness: 3
-- acidity: 3
-  aftertaste: 5
-  aroma: 2
-  bitterness: 2
-  body: 2
+  flavor: 2
+  sweetness: 10
+- acidity: 6
+  aftertaste: 6
+  aroma: 5
+  bitterness: 3
+  body: 1
   coffee_id: coffee_sumatra_mandheling
-  flavor: 6
+  flavor: 8
   sweetness: 7
 session_date: '2024-11-20'
