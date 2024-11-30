@@ -1,0 +1,12 @@
+# data/coffees/<coffee_id>.yaml
+
+coffee_id: "<unique_coffee_id>"
+name: "<Coffee Name>"
+origin: "<Country/Region of Origin>"
+roaster: "<Roaster Name>"
+roast_date: "<YYYY-MM-DD>"
+roast_level: "<Light/Medium/Dark>"
+flavor_notes:
+  - "<Flavor Note 1>"
+  - "<Flavor Note 2>"
+submitted_by: "<participant_id>"

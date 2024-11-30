@@ -1,0 +1,21 @@
+# data/sessions/<session_date>/ratings/<participant_id>.yaml
+
+participant_id: "<participant_id>"
+session_date: "<YYYY-MM-DD>"
+ratings:
+  - coffee_id: "<coffee_id_1>"
+    sweetness: <0-10>
+    acidity: <0-10>
+    bitterness: <0-10>
+    body: <0-10>
+    aroma: <0-10>
+    flavor: <0-10>
+    aftertaste: <0-10>
+  - coffee_id: "<coffee_id_2>"
+    sweetness: <0-10>
+    acidity: <0-10>
+    bitterness: <0-10>
+    body: <0-10>
+    aroma: <0-10>
+    flavor: <0-10>
+    aftertaste: <0-10>

@@ -1,0 +1,8 @@
+# data/participants/<participant_id>.yaml
+
+participant_id: "<unique_participant_id>"
+name: "<Full Name>"
+email: "<Email Address>"
+preferences:
+  - "<Preference 1>"
+  - "<Preference 2>"
