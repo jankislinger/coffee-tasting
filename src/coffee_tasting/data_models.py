@@ -33,7 +33,7 @@ class Rating(BaseModel):
 
     @field_validator("*", mode="before")
     def check_rating(cls, v, field):
-        if field.name in (
+        if field.field_name in (
             "sweetness",
             "acidity",
             "bitterness",

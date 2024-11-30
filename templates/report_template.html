@@ -1,0 +1,85 @@
+<!-- templates/report_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coffee Tasting Session - {{ session_date }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { color: #4A4A4A; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+        th, td { border: 1px solid #CCCCCC; padding: 8px; text-align: center; }
+        th { background-color: #F2F2F2; }
+        .coffee-section { margin-bottom: 50px; }
+    </style>
+</head>
+<body>
+    <h1>Coffee Tasting Session - {{ session_date }}</h1>
+
+    <h2>Participants</h2>
+    <ul>
+        {% for participant in participants %}
+            <li>{{ participant.name }} ({{ participant.participant_id }})</li>
+        {% endfor %}
+    </ul>
+
+    {% for coffee in coffees %}
+    <div class="coffee-section">
+        <h2>{{ coffee.name }} ({{ coffee.coffee_id }})</h2>
+        <p><strong>Origin:</strong> {{ coffee.origin }}</p>
+        <p><strong>Roaster:</strong> {{ coffee.roaster }}</p>
+        <p><strong>Roast Date:</strong> {{ coffee.roast_date }}</p>
+        <p><strong>Roast Level:</strong> {{ coffee.roast_level }}</p>
+        <p><strong>Flavor Notes:</strong> {{ ', '.join(coffee.flavor_notes) }}</p>
+
+        <h3>Average Ratings</h3>
+        <table>
+            <tr>
+                <th>Attribute</th>
+                <th>Average Score</th>
+            </tr>
+            {% for attribute, score in coffee.average_ratings.items() %}
+            <tr>
+                <td>{{ attribute }}</td>
+                <td>{{ "%.2f" | format(score) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h3>Individual Ratings</h3>
+        <table>
+            <tr>
+                <th>Participant</th>
+                {% for attribute in rating_attributes %}
+                <th>{{ attribute.capitalize() }}</th>
+                {% endfor %}
+            </tr>
+            {% for rating in coffee.ratings %}
+            <tr>
+                <td>{{ rating.participant_name }}</td>
+                {% for attribute in rating_attributes %}
+                <td>{{ rating[attribute] }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+
+    <h2>Overall Rankings</h2>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Coffee</th>
+            <th>Average Rank</th>
+        </tr>
+        {% for rank in overall_rankings %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ rank.coffee_name }} ({{ rank.coffee_id }})</td>
+            <td>{{ "%.2f" | format(rank.rank) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
