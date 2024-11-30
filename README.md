@@ -184,20 +184,15 @@ Templates are provided in the `templates/` directory for easy reuse:
 
 ### Validation Script
 
-- *Location*: `scripts/validate_data.py`
-- *Purpose*: Validates all YAML data files against predefined schemas using Pydantic.
-- *Usage*:
-    ```bash
-    python scripts/validate_data.py
-    ```
+- **Location**: [`validate_data.py`](src%2Fcoffee_tasting%2Fvalidate_data.py)
+- **Purpose**: Validates all YAML data files against predefined schemas using Pydantic.
+- **Usage**: `uv run validate_data`
   
 ### Report Generation Script
-- *Location*: scripts/generate_reports.py
-- *Purpose*: Generates HTML reports summarizing each session.
-- *Usage*:
-    ```bash
-    python scripts/generate_reports.py
-    ```
+
+- **Location**: [`generate_reports.py`](src%2Fcoffee_tasting%2Fgenerate_reports.py)
+- **Purpose**: Generates HTML reports summarizing each session.
+- **Usage**: `uv run generate_reports`
 
 ## Dependencies
 
@@ -211,7 +206,7 @@ Ensure you have the following Python packages installed:
 Install them using:
 
 ```bash
-pip install pyyaml pydantic jinja2 pandas
+uv sync
 ```
 
 ## License
