@@ -1,6 +1,8 @@
 # Coffee Tasting Sessions
 
 
+
+
 Welcome to the Coffee Tasting Sessions repository! This project aims to collect and analyze data from our monthly coffee tasting events to personalize coffee recommendations for participants.
 
 > [!WARNING]
