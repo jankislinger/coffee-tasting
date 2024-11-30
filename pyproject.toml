@@ -1,0 +1,20 @@
+[project]
+name = "coffee-tasting"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jan Kislinger", email = "jan.kislinger@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.10.2",
+    "pyyaml>=6.0.2",
+]
+
+[project.scripts]
+validate_data = "coffee_tasting:validate_data"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
