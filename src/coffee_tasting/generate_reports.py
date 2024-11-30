@@ -125,8 +125,8 @@ def generate_report_for_session(session_date):
 
     # Render the HTML template
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
-    template = env.get_template("report_template.html")
-    html_content = template.render(
+    html_template = env.get_template("report_template.html")
+    html_content = html_template.render(
         session_date=session_date,
         coffees=coffees_list,
         participants=participant_list,
@@ -138,6 +138,23 @@ def generate_report_for_session(session_date):
     output_file = os.path.join(REPORTS_DIR, f"{session_date}.html")
     with open(output_file, "w") as f:
         f.write(html_content)
+
+    print(f"Report saved to {output_file}")
+
+    # Render the Markdown template
+    md_template = env.get_template("report_template.md")
+    md_content = md_template.render(
+        session_date=session_date,
+        coffees=coffees_list,
+        participants=participant_list,
+        rating_attributes=rating_attributes,
+        overall_rankings=overall_rankings,
+    )
+
+    # Save the Markdown report
+    output_file = os.path.join(REPORTS_DIR, f"{session_date}.md")
+    with open(output_file, "w") as f:
+        f.write(md_content)
 
     print(f"Report saved to {output_file}")
 
