@@ -1,6 +1,6 @@
-email: alice.smith@example.com
-name: Alice Smith
 participant_id: participant_alice_smith
+name: Alice Smith
+email: alice.smith@example.com
 preferences:
 - Nutty
-- Floral
+- Fruity

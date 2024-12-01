@@ -1,6 +1,6 @@
-email: bob.johnson@example.com
-name: Bob Johnson
 participant_id: participant_bob_johnson
+name: Bob Johnson
+email: bob.johnson@example.com
 preferences:
 - Spicy
 - Fruity

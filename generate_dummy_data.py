@@ -2,23 +2,26 @@
 
 import os
 import random
-import yaml
+from collections import OrderedDict
 from datetime import datetime, timedelta
 from typing import List
+
+import oyaml as yaml
+
 from coffee_tasting.data_models import (
     CoffeeBean,
     Participant,
-    Rating,
+    ParticipantRanking,
     ParticipantRating,
     Ranking,
-    ParticipantRanking,
+    Rating,
 )
 
 # Constants
-DATA_DIR = 'data'
-COFFEES_DIR = os.path.join(DATA_DIR, 'coffees')
-PARTICIPANTS_DIR = os.path.join(DATA_DIR, 'participants')
-SESSIONS_DIR = os.path.join(DATA_DIR, 'sessions')
+DATA_DIR = "data"
+COFFEES_DIR = os.path.join(DATA_DIR, "coffees")
+PARTICIPANTS_DIR = os.path.join(DATA_DIR, "participants")
+SESSIONS_DIR = os.path.join(DATA_DIR, "sessions")
 
 # Ensure directories exist
 os.makedirs(COFFEES_DIR, exist_ok=True)
@@ -27,14 +30,14 @@ os.makedirs(SESSIONS_DIR, exist_ok=True)
 
 # Generate 8 unique participants
 participant_names = [
-    'Alice Smith',
-    'Bob Johnson',
-    'Carol Williams',
-    'David Jones',
-    'Eve Brown',
-    'Frank Miller',
-    'Grace Davis',
-    'Henry Wilson',
+    "Alice Smith",
+    "Bob Johnson",
+    "Carol Williams",
+    "David Jones",
+    "Eve Brown",
+    "Frank Miller",
+    "Grace Davis",
+    "Henry Wilson",
 ]
 
 participant_ids = []
@@ -47,7 +50,7 @@ for name in participant_names:
         name=name,
         email=f"{name.lower().replace(' ', '.')}@example.com",
         preferences=random.sample(
-            ['Fruity', 'Nutty', 'Chocolatey', 'Floral', 'Citrus', 'Spicy'], 2
+            ["Fruity", "Nutty", "Chocolatey", "Floral", "Citrus", "Spicy"], 2
         ),
     )
     participants.append(participant)
@@ -55,16 +58,16 @@ for name in participant_names:
 
     # Save participant data
     participant_file = os.path.join(PARTICIPANTS_DIR, f"{participant_id}.yaml")
-    with open(participant_file, 'w') as f:
+    with open(participant_file, "w") as f:
         yaml.safe_dump(participant.model_dump(), f)
 
 # Generate 5 coffees
 coffee_names = [
-    'Ethiopian Yirgacheffe',
-    'Colombian Supremo',
-    'Kenyan AA',
-    'Guatemala Antigua',
-    'Sumatra Mandheling',
+    "Ethiopian Yirgacheffe",
+    "Colombian Supremo",
+    "Kenyan AA",
+    "Guatemala Antigua",
+    "Sumatra Mandheling",
 ]
 
 coffee_ids = []
@@ -75,15 +78,11 @@ for name in coffee_names:
     coffee = CoffeeBean(
         coffee_id=coffee_id,
         name=name,
-        origin=name.split(' ')[0],
-        roaster='Best Beans Co.',
-        roast_date=(
-            datetime.now() - timedelta(days=random.randint(1, 30))
-        ).strftime('%Y-%m-%d'),
-        roast_level=random.choice(['Light', 'Medium', 'Dark']),
-        flavor_notes=random.sample(
-            ['Floral', 'Citrus', 'Chocolate', 'Spice', 'Berry', 'Nutty'], 2
-        ),
+        origin=name.split(" ")[0],
+        roaster="Best Beans Co.",
+        roast_date=(datetime.now() - timedelta(days=random.randint(1, 30))).strftime("%Y-%m-%d"),
+        roast_level=random.choice(["Light", "Medium", "Dark"]),
+        flavor_notes=random.sample(["Floral", "Citrus", "Chocolate", "Spice", "Berry", "Nutty"], 2),
         submitted_by=random.choice(participant_ids),
     )
     coffees.append(coffee)
@@ -91,20 +90,20 @@ for name in coffee_names:
 
     # Save coffee data
     coffee_file = os.path.join(COFFEES_DIR, f"{coffee_id}.yaml")
-    with open(coffee_file, 'w') as f:
+    with open(coffee_file, "w") as f:
         yaml.safe_dump(coffee.model_dump(), f)
 
 # Generate 3 sessions
 session_dates = [
-    (datetime.now() - timedelta(days=20)).strftime('%Y-%m-%d'),
-    (datetime.now() - timedelta(days=10)).strftime('%Y-%m-%d'),
-    datetime.now().strftime('%Y-%m-%d'),
+    (datetime.now() - timedelta(days=20)).strftime("%Y-%m-%d"),
+    (datetime.now() - timedelta(days=10)).strftime("%Y-%m-%d"),
+    datetime.now().strftime("%Y-%m-%d"),
 ]
 
 for session_date in session_dates:
     session_dir = os.path.join(SESSIONS_DIR, session_date)
-    ratings_dir = os.path.join(session_dir, 'ratings')
-    rankings_dir = os.path.join(session_dir, 'rankings')
+    ratings_dir = os.path.join(session_dir, "ratings")
+    rankings_dir = os.path.join(session_dir, "rankings")
     os.makedirs(ratings_dir, exist_ok=True)
     os.makedirs(rankings_dir, exist_ok=True)
 
@@ -134,10 +133,8 @@ for session_date in session_dates:
         )
 
         # Save participant ratings
-        ratings_file = os.path.join(
-            ratings_dir, f"{participant.participant_id}.yaml"
-        )
-        with open(ratings_file, 'w') as f:
+        ratings_file = os.path.join(ratings_dir, f"{participant.participant_id}.yaml")
+        with open(ratings_file, "w") as f:
             yaml.safe_dump(participant_rating.model_dump(), f)
 
         # Generate rankings
@@ -154,10 +151,8 @@ for session_date in session_dates:
         )
 
         # Save participant rankings
-        rankings_file = os.path.join(
-            rankings_dir, f"{participant.participant_id}.yaml"
-        )
-        with open(rankings_file, 'w') as f:
+        rankings_file = os.path.join(rankings_dir, f"{participant.participant_id}.yaml")
+        with open(rankings_file, "w") as f:
             yaml.safe_dump(participant_ranking.model_dump(), f)
 
-print('Dummy data generation complete.')
+print("Dummy data generation complete.")

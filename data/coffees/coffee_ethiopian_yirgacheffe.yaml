@@ -1,10 +1,10 @@
 coffee_id: coffee_ethiopian_yirgacheffe
-flavor_notes:
-- Spice
-- Nutty
 name: Ethiopian Yirgacheffe
 origin: Ethiopian
-roast_date: '2024-11-24'
-roast_level: Dark
 roaster: Best Beans Co.
-submitted_by: participant_alice_smith
+roast_date: '2024-11-06'
+roast_level: Light
+flavor_notes:
+- Floral
+- Berry
+submitted_by: participant_david_jones

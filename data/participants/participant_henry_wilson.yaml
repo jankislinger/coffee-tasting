@@ -1,6 +1,6 @@
-email: henry.wilson@example.com
-name: Henry Wilson
 participant_id: participant_henry_wilson
+name: Henry Wilson
+email: henry.wilson@example.com
 preferences:
-- Fruity
 - Chocolatey
+- Fruity

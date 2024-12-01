@@ -1,6 +1,6 @@
-email: david.jones@example.com
-name: David Jones
 participant_id: participant_david_jones
+name: David Jones
+email: david.jones@example.com
 preferences:
-- Citrus
-- Fruity
+- Floral
+- Nutty

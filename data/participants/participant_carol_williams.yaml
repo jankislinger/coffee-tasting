@@ -1,6 +1,6 @@
-email: carol.williams@example.com
-name: Carol Williams
 participant_id: participant_carol_williams
+name: Carol Williams
+email: carol.williams@example.com
 preferences:
-- Floral
+- Citrus
 - Fruity
