@@ -8,14 +8,10 @@ Welcome to the Coffee Tasting Sessions repository! This project aims to collect 
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Repository Structure](#repository-structure)
 - [How to Participate](#how-to-participate)
   - [Fork the Repository](#fork-the-repository)
   - [Clone Your Fork](#clone-your-fork)
   - [Add Your Data](#add-your-data)
-    - [Adding Coffee Beans](#adding-coffee-beans)
-    - [Adding Participant Information](#adding-participant-information)
-    - [Submitting Ratings and Rankings](#submitting-ratings-and-rankings)
   - [Commit and Push Your Changes](#commit-and-push-your-changes)
   - [Create a Pull Request](#create-a-pull-request)
 - [Automated Workflows](#automated-workflows)
@@ -27,49 +23,12 @@ Welcome to the Coffee Tasting Sessions repository! This project aims to collect 
 - [Scripts](#scripts)
   - [Validation Script](#validation-script)
   - [Report Generation Script](#report-generation-script)
-- [Dependencies](#dependencies)
-- [License](#license)
-- [Contact](#contact)
 
 ## Introduction
 
 Our coffee tasting sessions are collaborative events where participants bring their own coffee beans, brew filter coffee, and taste different varieties. We collect detailed ratings and rankings for each coffee to understand individual preferences and provide personalized recommendations.
 
 This repository stores all the data collected during these sessions, along with scripts for validation and report generation.
-
-## Repository Structure
-
-```
-coffee-tasting/
-├── README.md
-├── CONTRIBUTING.md
-├── data/
-│   ├── coffees/
-│   │   └── <coffee_id>.yaml
-│   ├── participants/
-│   │   └── <participant_id>.yaml
-│   └── sessions/
-│       └── <session_date>/
-│           ├── ratings/
-│           │   └── <participant_id>.yaml
-│           └── rankings/
-│               └── <participant_id>.yaml
-├── templates/
-│   ├── coffee_template.yaml
-│   ├── participant_template.yaml
-│   ├── session_ratings_template.yaml
-│   └── session_rankings_template.yaml
-├── scripts/
-│   ├── validate_data.py
-│   └── generate_reports.py
-├── reports/
-│   └── <session_date>.html
-└── .github/
-    └── workflows/
-        ├── data_validation.yml
-        ├── auto_branch_creation.yml
-        └── generate_reports.yml
-```
 
 ## How to Participate
 
@@ -182,6 +141,12 @@ Templates are provided in the `templates/` directory for easy reuse:
 
 ## Scripts
 
+Use the following command to install all required Python packages before running any script:
+
+```bash
+uv sync
+```
+
 ### Validation Script
 
 - **Location**: [`validate_data.py`](src%2Fcoffee_tasting%2Fvalidate_data.py)
@@ -193,32 +158,3 @@ Templates are provided in the `templates/` directory for easy reuse:
 - **Location**: [`generate_reports.py`](src%2Fcoffee_tasting%2Fgenerate_reports.py)
 - **Purpose**: Generates HTML reports summarizing each session.
 - **Usage**: `uv run generate_reports`
-
-## Dependencies
-
-Ensure you have the following Python packages installed:
-
-- `PyYAML`
-- `pydantic`
-- `Jinja2`
-- `pandas`
-
-Install them using:
-
-```bash
-uv sync
-```
-
-## License
-
-This project is licensed under the MIT License.
-
-## Contact
-
-For questions or support, please open an issue or contact the repository maintainers.
-
-
-
-
-
-
