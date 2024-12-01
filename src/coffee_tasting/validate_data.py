@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
-
 import glob
 import os
+import sys
+from typing import Container, Any
 
 import yaml
 from pydantic import ValidationError
@@ -14,42 +14,61 @@ from coffee_tasting.data_models import (
 )
 
 
-def load_yaml_file(file_path):
-    with open(file_path, "r") as f:
-        data = yaml.safe_load(f)
-    return data
-
-
-def main():
+def main() -> int:
     errors = []
-    coffee_ids = set()
-    participant_ids = set()
 
-    # Load and validate coffee beans
+    coffees = validate_coffees(errors)
+    participants = validate_participants(errors)
+    validate_sessions(coffees, participants, errors)
+
+    # Report validation results
+    if not errors:
+        print("All data validated successfully.")
+        return 0
+
+    print(f"Validation failed with the following errors ({len(errors)}):")
+    for error in errors:
+        print(f"- {error}\n")
+    return 1
+
+
+def validate_coffees(errors: list[str]) -> dict[str, CoffeeBean | None]:
     coffee_files = glob.glob("data/coffees/*.yaml")
     coffees = {}
     for file in coffee_files:
-        data = load_yaml_file(file)
+        coffee_id_file = id_from_file_name(file)
         try:
+            data = load_yaml_file(file)
             coffee = CoffeeBean(**data)
+            assert coffee.coffee_id == coffee_id_file, "Coffee ID has to match file name"
             coffees[coffee.coffee_id] = coffee
-            coffee_ids.add(coffee.coffee_id)
-        except ValidationError as e:
+        except (yaml.YAMLError, ValidationError, AssertionError) as e:
             errors.append(f"Error in {file}:\n{e}")
+            coffees[coffee_id_file] = None
+    return coffees
 
-    # Load and validate participants
+
+def validate_participants(errors: list[str]) -> dict[str, Participant]:
     participant_files = glob.glob("data/participants/*.yaml")
     participants = {}
     for file in participant_files:
-        data = load_yaml_file(file)
+        participant_id_file = id_from_file_name(file)
         try:
+            data = load_yaml_file(file)
             participant = Participant(**data)
+            assert (
+                participant.participant_id == participant_id_file
+            ), "Participant ID has to match file name"
             participants[participant.participant_id] = participant
-            participant_ids.add(participant.participant_id)
-        except ValidationError as e:
+        except (yaml.YAMLError, ValidationError, AssertionError) as e:
             errors.append(f"Error in {file}:\n{e}")
+            participants[participant_id_file] = None
+    return participants
 
-    # Load and validate session ratings and rankings
+
+def validate_sessions(
+    coffee_ids: Container[str], participant_ids: Container[str], errors: list[str]
+):
     session_dirs = glob.glob("data/sessions/*")
     for session_dir in session_dirs:
         session_date = os.path.basename(session_dir)
@@ -112,15 +131,16 @@ def main():
             except ValidationError as e:
                 errors.append(f"Error in {file}:\n{e}")
 
-    # Report validation results
-    if errors:
-        print("Validation failed with the following errors:")
-        for error in errors:
-            print(f"- {error}\n")
-        exit(1)
-    else:
-        print("All data validated successfully.")
+
+def load_yaml_file(file_path: str) -> dict[str, Any]:
+    with open(file_path, "r") as f:
+        data = yaml.safe_load(f)
+    return data
+
+
+def id_from_file_name(file_name: str) -> str:
+    return file_name.split("/")[-1].rsplit(".", 1)[0]
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
