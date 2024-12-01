@@ -15,8 +15,8 @@ dependencies = [
 ]
 
 [project.scripts]
-validate_data = "coffee_tasting:validate_data"
-generate_reports = "coffee_tasting:generate_reports"
+validate_data = "coffee_tasting.validate_data:main"
+generate_reports = "coffee_tasting.generate_reports:main"
 
 [build-system]
 requires = ["hatchling"]
