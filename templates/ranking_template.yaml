@@ -1,0 +1,18 @@
+# data/sessions/<session_date>/rankings/<participant_id>.yaml
+
+participant_id: "<participant_id>"
+session_date: "<YYYY-MM-DD>"
+rankings:
+  - rank: <1>
+    coffee_id: "<coffee_id>"
+    rating:
+      overall: <0-10>
+      acidity: <0-10>
+      aftertaste: <0-10>
+      aroma: <0-10>
+      bitterness: <0-10>
+      body: <0-10>
+      flavor: <0-10>
+      sweetness: <0-10>
+    notes: "<Your personal notes on this coffee>"
+  # Repeat the above block for each coffee tasted in the session

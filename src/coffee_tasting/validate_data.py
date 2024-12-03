@@ -1,6 +1,7 @@
 import glob
 import os
 import sys
+from pathlib import Path
 from typing import Container, Any
 
 import yaml
@@ -8,10 +9,10 @@ from pydantic import ValidationError
 
 from coffee_tasting.data_models import (
     CoffeeBean,
-    Participant,
     ParticipantRanking,
-    ParticipantRating,
 )
+
+DATA_ROOT = Path(__file__).parents[2] / "data"
 
 
 def main() -> int:
@@ -48,26 +49,22 @@ def validate_coffees(errors: list[str]) -> dict[str, CoffeeBean | None]:
     return coffees
 
 
-def validate_participants(errors: list[str]) -> dict[str, Participant]:
-    participant_files = glob.glob("data/participants/*.yaml")
-    participants = {}
-    for file in participant_files:
-        participant_id_file = id_from_file_name(file)
-        try:
-            data = load_yaml_file(file)
-            participant = Participant(**data)
-            assert (
-                participant.participant_id == participant_id_file
-            ), "Participant ID has to match file name"
-            participants[participant.participant_id] = participant
-        except (yaml.YAMLError, ValidationError, AssertionError) as e:
-            errors.append(f"Error in {file}:\n{e}")
-            participants[participant_id_file] = None
+def validate_participants(errors: list[str]) -> set[str]:
+    try:
+        participants = load_yaml_file(DATA_ROOT / "participants.yaml")
+    except (ValidationError, FileNotFoundError) as e:
+        errors.append(f"Failed to load yaml file for participants: {e}")
+        return set()
+
+    num_participants = len(participants)
+    participants = set(participants)
+    if len(participants) != num_participants:
+        errors.append("Some participants are duplicated")
     return participants
 
 
 def validate_sessions(
-    coffee_ids: Container[str], participant_ids: Container[str], errors: list[str]
+        coffee_ids: Container[str], participant_ids: Container[str], errors: list[str]
 ):
     session_dirs = glob.glob("data/sessions/*")
     for session_dir in session_dirs:
@@ -132,10 +129,11 @@ def validate_sessions(
                 errors.append(f"Error in {file}:\n{e}")
 
 
-def load_yaml_file(file_path: str) -> dict[str, Any]:
-    with open(file_path, "r") as f:
-        data = yaml.safe_load(f)
-    return data
+def load_yaml_file(file_path: Path | str) -> dict[str, Any] | list[Any]:
+    if isinstance(file_path, str):
+        file_path = Path(file_path)
+    with file_path.open("r") as f:
+        return yaml.safe_load(f)
 
 
 def id_from_file_name(file_name: str) -> str:

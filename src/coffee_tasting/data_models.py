@@ -1,61 +1,51 @@
-from typing import List, Optional
+from typing import List
 
 from pydantic import BaseModel, field_validator
 
 
 class CoffeeBean(BaseModel):
     coffee_id: str
+    url: str
     name: str
-    origin: str
     roaster: str
-    roast_date: str  # You can use datetime.date if needed
+    origin: str
+    process_method: str
     roast_level: str
     flavor_notes: List[str]
+
+
+class CoffeeBatch(BaseModel):
+    coffee_id: str
+    session_date: str
     submitted_by: str
-
-
-class Participant(BaseModel):
-    participant_id: str
-    name: Optional[str]
-    email: Optional[str]
-    preferences: Optional[List[str]]
+    roast_date: str
+    crop_date: str
+    weight: int
+    price: float
 
 
 class Rating(BaseModel):
-    coffee_id: str
-    sweetness: int
+    overall: int
     acidity: int
+    aftertaste: int
+    aroma: int
     bitterness: int
     body: int
-    aroma: int
     flavor: int
-    aftertaste: int
+    sweetness: int
 
     @field_validator("*", mode="before")
     def check_rating(cls, v, field):
-        if field.field_name in (
-            "sweetness",
-            "acidity",
-            "bitterness",
-            "body",
-            "aroma",
-            "flavor",
-            "aftertaste",
-        ):
-            if not isinstance(v, int) or not 0 <= v <= 10:
-                raise ValueError(f"{field.name} must be an integer between 0 and 10")
+        if not isinstance(v, int) or not 0 <= v <= 10:
+            raise ValueError(f"{field.name} must be an integer between 0 and 10")
         return v
-
-
-class ParticipantRating(BaseModel):
-    participant_id: str
-    session_date: str
-    ratings: List[Rating]
 
 
 class Ranking(BaseModel):
     rank: int
     coffee_id: str
+    rating: Rating
+    notes: str
 
 
 class ParticipantRanking(BaseModel):

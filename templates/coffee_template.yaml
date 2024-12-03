@@ -1,12 +1,13 @@
 # data/coffees/<coffee_id>.yaml
 
 coffee_id: "<unique_coffee_id>"
+url: "<Coffee URL or website>"
 name: "<Coffee Name>"
-origin: "<Country/Region of Origin>"
 roaster: "<Roaster Name>"
-roast_date: "<YYYY-MM-DD>"
-roast_level: "<Light/Medium/Dark>"
+origin: "<Origin Country/Region>"
+process_method: "<Processing Method (e.g., Washed, Natural)>"
+roast_level: "<Roast Level (e.g., Light, Medium, Dark)>"
 flavor_notes:
   - "<Flavor Note 1>"
   - "<Flavor Note 2>"
-submitted_by: "<participant_id>"
+  # Add more flavor notes as needed

@@ -1,0 +1,9 @@
+# data/sessions/<session_date>/coffees/<coffee_id>.yaml
+
+coffee_id: "<coffee_id>"  # Must match an existing coffee_id in data/coffees/
+session_date: "<YYYY-MM-DD>"
+submitted_by: "<participant_id>"
+roast_date: "<YYYY-MM-DD>"
+crop_date: "<YYYY-MM-DD>"
+weight: <Weight in grams>
+price: <Price in currency units>
