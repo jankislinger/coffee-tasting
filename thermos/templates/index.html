@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Tasting Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header Section -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="Logo" class="h-10">
+        <h1 class="text-2xl font-bold">Coffee Tasting Dashboard</h1>
+      </div>
+      <div class="flex space-x-4">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Start New Session</button>
+        <button class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300">View Dashboard</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-cover bg-center h-96 flex items-center justify-center"
+           style="background-image: url('{{ url_for('static', filename='hero.png') }}');">
+    <div class="bg-black bg-opacity-50 text-center p-6 rounded-lg">
+      <h2 class="text-4xl text-white font-bold mb-4">Discover Your Coffee Preferences</h2>
+      <p class="text-white text-lg">Explore analytics, flavor notes, and more.</p>
+      <div class="mt-4">
+        <input type="text" placeholder="Search for coffee or participants" class="w-1/2 p-3 rounded shadow-sm">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="container mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold text-center mb-8">Explore the Flavor Universe</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="bg-white p-6 shadow rounded-lg text-center">
+        <div class="text-4xl text-blue-500 mb-4">☕</div>
+        <h3 class="text-xl font-semibold mb-2">Flavor Profiles</h3>
+        <p class="text-gray-600">Discover which flavors resonate with participants.</p>
+        <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Explore Profiles</button>
+      </div>
+      <!-- Card 2 -->
+      <div class="bg-white p-6 shadow rounded-lg text-center">
+        <div class="text-4xl text-blue-500 mb-4">📊</div>
+        <h3 class="text-xl font-semibold mb-2">Coffee Ratings</h3>
+        <p class="text-gray-600">See the ratings for every coffee type.</p>
+        <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Ratings</button>
+      </div>
+      <!-- Card 3 -->
+      <div class="bg-white p-6 shadow rounded-lg text-center">
+        <div class="text-4xl text-blue-500 mb-4">👤</div>
+        <h3 class="text-xl font-semibold mb-2">Participant Insights</h3>
+        <p class="text-gray-600">Analyze participant preferences and trends.</p>
+        <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Insights</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Highlights Section -->
+  <section class="bg-gray-200 py-12">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Recent Tastings</h2>
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full bg-white rounded-lg shadow-lg">
+          <thead>
+            <tr class="bg-gray-100 text-gray-700">
+              <th class="py-3 px-4">Coffee Name</th>
+              <th class="py-3 px-4">Average Rating</th>
+              <th class="py-3 px-4">Top Flavor Note</th>
+              <th class="py-3 px-4">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="py-3 px-4">Ethiopian Blend</td>
+              <td class="py-3 px-4 text-center">9.5</td>
+              <td class="py-3 px-4">Fruity</td>
+              <td class="py-3 px-4 text-center">
+                <button class="text-blue-500 hover:underline">View Details</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4">Colombian Dark</td>
+              <td class="py-3 px-4 text-center">8.7</td>
+              <td class="py-3 px-4">Chocolatey</td>
+              <td class="py-3 px-4 text-center">
+                <button class="text-blue-500 hover:underline">View Details</button>
+              </td>
+            </tr>
+            <!-- More Rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-6">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Coffee Tasting Dashboard. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

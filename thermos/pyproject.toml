@@ -1,0 +1,14 @@
+[project]
+name = "thermos"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "coffee-tasting",
+    "flask>=3.1.0",
+    "frozen-flask>=1.0.2",
+]
+
+[tool.uv.sources]
+coffee-tasting = { workspace = true }

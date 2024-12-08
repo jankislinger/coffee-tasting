@@ -20,7 +20,7 @@ jobs:
       - name: Install the project
         run: uv sync
       - name: Run freeze.py to generate static site
-        run: cd thermos && uv run freeze.py
+        run: cd thermos && uv run --all-groups freeze.py
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
