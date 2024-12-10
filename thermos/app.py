@@ -52,17 +52,17 @@ def roastery(name):
     )
 
 
-@app.route("/coffee/<int:id>/")
-def coffee(id):
-    coffee = next((c for c in coffees if c["id"] == id), None)
-    if not coffee:
-        return "Coffee not found", 404
-    ratings = coffee.get("ratings", [])
+@app.route("/coffee/<int:coffee_id>/")
+def coffee(coffee_id):
+    # coffee = next((c for c in coffees if c["id"] == id), None)
+    # if not coffee:
+    #     return "Coffee not found", 404
+    # ratings = coffee.get("ratings", [])
     return render_template(
         "coffee.html",
-        coffee=coffee,
-        ratings=ratings,
-        full_url=full_url,
+        # coffee=coffee,
+        # ratings=ratings,
+        # full_url=full_url,
     )
 
 
