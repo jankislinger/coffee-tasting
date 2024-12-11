@@ -1,6 +1,8 @@
 from flask_frozen import Freezer
+
 from app import app
 
+app.config['FREEZER_BASE_URL'] = 'https://example.com/mysite'
 freezer = Freezer(app)
 
 
