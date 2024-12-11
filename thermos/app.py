@@ -30,15 +30,15 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/coffees")
-def coffees():
-    top_rated_coffees = sorted(coffees, key=lambda x: -x["average_rating"])[:5]
-    return render_template(
-        "index.html",
-        top_rated_coffees=top_rated_coffees,
-        roasteries=roasteries,
-        full_url=full_url,
-    )
+# @app.route("/coffees")
+# def coffees():
+#     top_rated_coffees = sorted(coffees, key=lambda x: -x["average_rating"])[:5]
+#     return render_template(
+#         "index.html",
+#         top_rated_coffees=top_rated_coffees,
+#         roasteries=roasteries,
+#         full_url=full_url,
+#     )
 
 
 @app.route("/roastery/<name>/")
@@ -63,20 +63,6 @@ def coffee(coffee_id):
         # coffee=coffee,
         # ratings=ratings,
         # full_url=full_url,
-    )
-
-
-@app.route("/user/<username>/")
-def user(username):
-    user_data = next((u for u in users if u["username"] == username), None)
-    if not user_data:
-        return "User not found", 404
-    user_ratings = user_data.get("ratings", [])
-    return render_template(
-        "user.html",
-        username=username,
-        ratings=user_ratings,
-        full_url=full_url,
     )
 
 
