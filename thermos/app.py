@@ -1,27 +1,18 @@
+from pathlib import Path
+from typing import Any
+
 import yaml
-from flask import Flask, render_template, url_for
+from coffee_tasting.data_models import Coffee
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Base path for the repository (update this with your repository name)
-BASE_PATH = "/<repository-name>"
+DATA_DIR = Path(__file__).parent.parent / "data"
 
 
-# Helper to prepend base path to URLs
-def full_url(endpoint, **kwargs):
-    return BASE_PATH + url_for(endpoint, **kwargs)
-
-
-# Load YAML data
-def load_yaml(file_path):
-    with open(file_path) as file:
+def load_yaml(file_path: Path) -> dict[str, Any]:
+    with file_path.open() as file:
         return yaml.safe_load(file)
-
-
-# Mock data loaded from YAML files
-# roasteries = load_yaml("data/roasteries.yaml")
-# coffees = load_yaml("data/coffees.yaml")
-# users = load_yaml("data/users.yaml")
 
 
 # Routes
@@ -30,40 +21,17 @@ def index():
     return render_template("index.html")
 
 
-# @app.route("/coffees")
-# def coffees():
-#     top_rated_coffees = sorted(coffees, key=lambda x: -x["average_rating"])[:5]
-#     return render_template(
-#         "index.html",
-#         top_rated_coffees=top_rated_coffees,
-#         roasteries=roasteries,
-#         full_url=full_url,
-#     )
-
-
-@app.route("/roastery/<name>/")
-def roastery(name):
-    roastery_coffees = [c for c in coffees if c["roastery"] == name]
-    return render_template(
-        "roastery.html",
-        name=name,
-        coffees=roastery_coffees,
-        full_url=full_url,
-    )
-
-
-@app.route("/coffee/<int:coffee_id>/")
-def coffee(coffee_id):
-    # coffee = next((c for c in coffees if c["id"] == id), None)
-    # if not coffee:
-    #     return "Coffee not found", 404
-    # ratings = coffee.get("ratings", [])
+@app.route("/coffee/<coffee_id>/")
+def coffee(coffee_id: str):
     return render_template(
         "coffee.html",
-        # coffee=coffee,
-        # ratings=ratings,
-        # full_url=full_url,
+        coffee=load_coffee(coffee_id),
     )
+
+
+def load_coffee(coffee_id: str) -> Coffee:
+    data = load_yaml(DATA_DIR / "coffees" / f"{coffee_id}.yaml")
+    return Coffee(**data)
 
 
 if __name__ == "__main__":

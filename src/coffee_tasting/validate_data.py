@@ -8,7 +8,7 @@ import yaml
 from pydantic import ValidationError
 
 from coffee_tasting.data_models import (
-    CoffeeBean,
+    Coffee,
     ParticipantRanking,
 )
 
@@ -33,14 +33,14 @@ def main() -> int:
     return 1
 
 
-def validate_coffees(errors: list[str]) -> dict[str, CoffeeBean | None]:
+def validate_coffees(errors: list[str]) -> dict[str, Coffee | None]:
     coffee_files = glob.glob("data/coffees/*.yaml")
     coffees = {}
     for file in coffee_files:
         coffee_id_file = id_from_file_name(file)
         try:
             data = load_yaml_file(file)
-            coffee = CoffeeBean(**data)
+            coffee = Coffee(**data)
             assert coffee.coffee_id == coffee_id_file, "Coffee ID has to match file name"
             coffees[coffee.coffee_id] = coffee
         except (yaml.YAMLError, ValidationError, AssertionError) as e:

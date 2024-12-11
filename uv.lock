@@ -350,12 +350,14 @@ name = "thermos"
 version = "0.1.0"
 source = { virtual = "thermos" }
 dependencies = [
+    { name = "coffee-tasting" },
     { name = "flask" },
     { name = "frozen-flask" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "coffee-tasting", editable = "." },
     { name = "flask", specifier = ">=3.1.0" },
     { name = "frozen-flask", specifier = ">=1.0.2" },
 ]

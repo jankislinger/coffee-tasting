@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coffee Overview</title>
+  <title>{{ coffee.name }} | Coffee Tasting</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
@@ -21,39 +21,32 @@
   <!-- Coffee Information Card -->
   <div class="bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row">
     <!-- Coffee Image -->
-    <div class="md:w-1/2">
-      <img src="https://via.placeholder.com/600x400" alt="Coffee Image" id="coffee-image"
+    <div class="md:w-1/3">
+      <img src="{{ coffee.image_url }}" alt="Coffee Image" id="coffee-image"
            class="w-full h-auto rounded-lg">
     </div>
     <!-- Coffee Details -->
-    <div class="md:w-1/2 mt-6 md:mt-0 md:pl-6">
-      <h2 class="text-3xl font-bold text-gray-800 mb-2" id="coffee-name">Ethiopian Yirgacheffe</h2>
+    <div class="md:w-2/3 mt-6 md:mt-0 md:pl-6">
+      <h2 class="text-3xl font-bold text-gray-800 mb-2" id="coffee-name">{{ coffee.name }}</h2>
       <p class="text-gray-600 text-sm mb-4">
-        Roasted by <span id="coffee-roaster" class="font-semibold">Sunrise Roasters</span>
+        Roasted by <span id="coffee-roaster" class="font-semibold">{{ coffee.roaster }}</span>
       </p>
-      <a href="#" id="coffee-url" class="text-blue-500 hover:underline text-sm">Visit Roaster Website</a>
+      <a href="{{ coffee.url }}" id="coffee-url" class="text-blue-500 hover:underline text-sm" target="_blank">Visit Roaster Website</a>
       <p class="text-gray-600 mt-4">
-        <span class="font-semibold">Origin:</span> <span id="coffee-origin">Ethiopia, Yirgacheffe</span>
+        <span class="font-semibold">Origin:</span> <span id="coffee-origin">{{ coffee.origin }}</span>
       </p>
       <p class="text-gray-600 mt-2">
-        <span class="font-semibold">Processing Method:</span> <span id="coffee-process">Washed</span>
+        <span class="font-semibold">Processing Method:</span> <span id="coffee-process">{{ coffee.process_method }}</span>
       </p>
       <p class="text-gray-600 mt-2">
-        <span class="font-semibold">Roast Level:</span> <span id="coffee-roast-level">Light</span>
+        <span class="font-semibold">Roast Level:</span> <span id="coffee-roast-level">{{ coffee.roast_level }}</span>
+      </p>
+      <p class="text-gray-600 mt-2">
+        <span class="font-semibold">Flavor Notes:</span> <span id="coffee-roast-level">{{ coffee.flavor_notes|join(", ") }}</span>
       </p>
     </div>
   </div>
 
-
-  <!-- Flavor Notes Section -->
-  <section class="mt-8">
-    <h3 class="text-2xl font-bold mb-4">Flavor Notes</h3>
-    <ul id="flavor-notes" class="bg-white shadow-lg rounded-lg p-6">
-      <li class="text-gray-600 py-1">Citrus</li>
-      <li class="text-gray-600 py-1">Floral</li>
-      <li class="text-gray-600 py-1">Bergamot</li>
-    </ul>
-  </section>
 </main>
 
 <!-- Footer Section -->
@@ -63,35 +56,5 @@
   </div>
 </footer>
 
-<!-- Example Data Binding -->
-<script>
-    // Example JavaScript for Dynamically Injecting Coffee Data
-    const coffeeData = {
-        coffee_id: "ethiopian_yirgacheffe",
-        url: "https://www.sunriseroasters.com",
-        name: "Ethiopian Yirgacheffe",
-        roaster: "Sunrise Roasters",
-        origin: "Ethiopia, Yirgacheffe",
-        process_method: "Washed",
-        roast_level: "Light",
-        flavor_notes: ["Citrus", "Floral", "Bergamot"],
-    };
-
-    document.getElementById("coffee-name").innerText = coffeeData.name;
-    document.getElementById("coffee-roaster").innerText = coffeeData.roaster;
-    document.getElementById("coffee-url").href = coffeeData.url;
-    document.getElementById("coffee-origin").innerText = coffeeData.origin;
-    document.getElementById("coffee-process").innerText = coffeeData.process_method;
-    document.getElementById("coffee-roast-level").innerText = coffeeData.roast_level;
-
-    const flavorNotesList = document.getElementById("flavor-notes");
-    flavorNotesList.innerHTML = ""; // Clear any default items
-    coffeeData.flavor_notes.forEach((note) => {
-        const listItem = document.createElement("li");
-        listItem.className = "text-gray-600 py-1";
-        listItem.innerText = note;
-        flavorNotesList.appendChild(listItem);
-    });
-</script>
 </body>
 </html>
