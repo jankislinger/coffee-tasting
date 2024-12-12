@@ -2,6 +2,7 @@ from typing import List
 
 from pydantic import BaseModel, field_validator
 
+
 class Coffee(BaseModel):
     coffee_id: str
     url: str
