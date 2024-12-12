@@ -1,8 +1,10 @@
+from pathlib import Path
+
 from flask_frozen import Freezer
 
 from app import app
 
-app.config["FREEZER_BASE_URL"] = "https://example.com/mysite"
+app.config["FREEZER_BASE_URL"] = "/coffee-tasting"
 freezer = Freezer(app)
 
 
@@ -13,3 +15,5 @@ def coffee():
 
 if __name__ == "__main__":
     freezer.freeze()
+    index_html = Path("build") / "index.html"
+    assert "coffee-tasting/static" in index_html.read_text()
