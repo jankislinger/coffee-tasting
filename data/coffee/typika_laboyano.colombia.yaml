@@ -1,0 +1,10 @@
+coffee_id: "typika-laboyano"
+url: "<Coffee URL or website>"
+name: "<Coffee Name>"
+roaster: "Typika"
+origin: "Colombia"
+process_method: "<Processing Method (e.g., Washed, Natural)>"
+roast_level: "<Roast Level (e.g., Light, Medium, Dark)>"
+flavor_notes:
+  - "<Flavor Note 1>"
+  - "<Flavor Note 2>"

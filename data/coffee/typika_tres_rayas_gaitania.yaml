@@ -1,0 +1,10 @@
+coffee_id: "typika-tres-rayas-gaitania"
+url: "<Coffee URL or website>"
+name: "Tres Rayas - Gaitania"
+roaster: "Typika"
+origin: "Colombia"
+process_method: "Natural"
+roast_level:[typika_tres_rayas_gaitania.md](typika_tres_rayas_gaitania.md) "<Roast Level (e.g., Light, Medium, Dark)>"
+flavor_notes:
+  - "<Flavor Note 1>"
+  - "<Flavor Note 2>"
