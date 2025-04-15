@@ -2,6 +2,7 @@
 
 coffee_id: "<unique_coffee_id>"
 url: "<Coffee URL or website>"
+image_url: "<URL of the coffee image>"
 name: "<Coffee Name>"
 roaster: "<Roaster Name>"
 origin: "<Origin Country/Region>"

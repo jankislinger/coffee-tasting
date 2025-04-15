@@ -6,6 +6,7 @@ from pydantic import BaseModel, field_validator
 class CoffeeBean(BaseModel):
     coffee_id: str
     url: str
+    image_url: str
     name: str
     roaster: str
     origin: str
