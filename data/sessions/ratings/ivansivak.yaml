@@ -1,0 +1,15 @@
+participant_id: "ivansivak"
+session_date: "2025-04-15"
+rankings:
+  - rank: 3
+    coffee_id: "fiftybeans-single"
+    rating:
+      overall: 6
+  - rank: 2
+    coffee_id: "typika-laboyano"
+    rating:
+      overall: 7
+  - rank: 1
+    coffee_id: "typika-tres-rayas-gaitania"
+    rating:
+      overall: 8
