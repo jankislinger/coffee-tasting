@@ -18,7 +18,7 @@ DATA_ROOT = Path(__file__).parents[2] / "data"
 def main() -> int:
     errors = []
 
-    coffees = validate_coffees(errors)
+    coffees = validate_coffees()
     participants = validate_participants(errors)
     validate_sessions(coffees, participants, errors)
 
@@ -33,19 +33,14 @@ def main() -> int:
     return 1
 
 
-def validate_coffees(errors: list[str]) -> dict[str, Coffee | None]:
-    coffee_files = glob.glob("data/coffees/*.yaml")
+def validate_coffees() -> dict[str, Coffee]:
+    coffee_files = DATA_ROOT.joinpath("coffees").glob("*.yaml")
     coffees = {}
     for file in coffee_files:
-        coffee_id_file = id_from_file_name(file)
-        try:
-            data = load_yaml_file(file)
-            coffee = Coffee(**data)
-            assert coffee.coffee_id == coffee_id_file, "Coffee ID has to match file name"
-            coffees[coffee.coffee_id] = coffee
-        except (yaml.YAMLError, ValidationError, AssertionError) as e:
-            errors.append(f"Error in {file}:\n{e}")
-            coffees[coffee_id_file] = None
+        data = load_yaml_file(file)
+        coffee = Coffee(**data)
+        assert coffee.coffee_id == file.stem, "Coffee ID has to match file name"
+        coffees[coffee.coffee_id] = coffee
     return coffees
 
 
